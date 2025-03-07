@@ -379,9 +379,12 @@ p:not(.text-overlay) {
     }
     
     .image-container img {
-        width: 600px; 
-        height: 350px; 
-        object-fit: fill; /* Forces the image to stretch */
+        width: 100%;
+        height: auto; /* Ensures images scale proportionally */
+        max-width: 100%; /* Prevents images from overflowing their containers */
+        object-fit: cover; /* Ensures images fill the container without stretching */
+        margin: 0;
+        padding: 0;
     }
 }
 
@@ -395,109 +398,45 @@ p:not(.text-overlay) {
     }
         
     .image-container img {
-        width: 600px; 
-        height: 350px; 
-        object-fit: fill; /* Forces the image to stretch */
+        width: 100%;
+        height: auto; /* Ensures images scale proportionally */
+        max-width: 100%; /* Prevents images from overflowing their containers */
+        object-fit: cover; /* Ensures images fill the container without stretching */
+        margin: 0;
+        padding: 0;
     }
 }
 
 /* about me */
 /* Default mobile-first vertical layout */
-.content-grid {
+.about-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2rem;
-    padding: 2rem;
-}
-
-.grid-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    max-width: 100%;
+    margin: auto;
     text-align: center;
-    max-width: 300px;
 }
 
-.grid-item img {
+.about-container .image-container {
+    width: 100%;
+    max-width: 90%;
+}
+
+.about-container .image-container img {
     width: 100%;
     height: auto;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
 }
 
-.grid-item p {
-    margin-top: 1rem;
-    font-size: 1.1rem;
+.about-container .text-container {
+    width: 100%;
+    max-width: 90%;
+    font-size: 1rem;
     line-height: 1.5;
-}
-
-@media (min-width: 600px) {
-    .content-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr); /* 2 equal columns */
-        gap: 2rem; /* Space between items */
-        align-items: start;
-        justify-items: center;
-        padding: 2rem;
-        max-width: 100%;
-    }
-
-    .grid-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        max-width: 100%;
-    }
-
-    .grid-item img {
-        width: 100%;
-        height: auto;
-        border-radius: 10px; /* Optional styling */
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional styling */
-    }
-
-    .grid-item p {
-        margin-top: 1rem;
-        font-size: 1.1rem;
-        line-height: 1.5;
-        max-width: 100%;
-    }
-}
-
-@media (min-width: 1000px) {
-    .content-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr); /* 4 equal columns */
-        gap: 2rem; /* Space between items */
-        align-items: start;
-        justify-items: center;
-        padding: 2rem;
-        max-width: 100%;
-    }
-
-    .grid-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        max-width: 100%;
-    }
-
-    .grid-item img {
-        width: 100%;
-        height: auto;
-        border-radius: 10px; /* Optional styling */
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional styling */
-    }
-
-    .grid-item p {
-        margin-top: 1rem;
-        font-size: 1.1rem;
-        line-height: 1.5;
-        max-width: 100%;
-    }
+    text-align: center;
 }
 
 /* about blogs */
@@ -563,5 +502,165 @@ p:not(.text-overlay) {
     .about-container .text-container {
         max-width: 50%;
         text-align: left;
+    }
+}
+
+/* about me and all blogs */
+/* Basic styling for mobile */
+.b-image-wrapper {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    gap: 1rem;
+    width: 100%;
+    padding: 0 10px;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.b-image-container img {
+    width: 100%;
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover; /* Ensure images fill their container without distortion */
+}
+
+@media (min-width: 800px) {
+    .b-image-wrapper {
+        display: flex; /* Use flexbox to align items side by side */
+        flex-direction: row; /* Align items horizontally */
+        gap: 2rem; /* Add space between image and text */
+        justify-content: center; /* Center the content horizontally */
+        align-items: center; /* Align the items vertically */
+        width: 100%;
+        padding-left: 1.5rem;
+    }
+
+    .b-text-content {
+        max-width: 400px; /* Limit text width for readability */
+        text-align: left; /* Align text to the left */
+        padding: 1rem; /* Add padding for better spacing */
+    }
+
+    .b-image-container {
+        width: 100%; /* Set image width to 50% of the parent container */
+    }
+
+    .b-image-container img {
+        width: 100%; /* Ensure image fills its container */
+        height: auto; /* Maintain aspect ratio */
+        max-height: 650px;
+        object-fit: contain; /* Ensures the full image is visible */
+    }
+}
+
+@media (min-width: 1000px) {
+    .b-image-wrapper {
+        display: flex; /* Use flexbox for alignment */
+        flex-direction: row; /* Keep items side by side */
+        gap: 2rem; /* Add space between image and text */
+        justify-content: center; /* Center content horizontally */
+        align-items: center; /* Align items vertically */
+        width: 100%; /* Ensure wrapper takes up full width */
+        padding-left: 1.5rem;
+    }
+
+    .b-text-content {
+        max-width: 800px; /* Adjust text width for larger screens */
+        text-align: left; /* Align text to the left */
+        padding: 1.5rem; /* Add more padding for better readability */
+    }
+
+    .b-image-container {
+        width: 60%; /* Set image width to 50% of the parent container */
+    }
+
+    .b-image-container img {
+        width: 100%; /* Ensure image fills container */
+        height: auto; /* Maintain aspect ratio */
+        max-height: 650px;
+        object-fit: contain; /* Ensures the full image is visible */
+    }
+}
+
+/* bucket list */
+.bucket-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 1rem;
+    justify-content: center;
+    width: 100%;
+}
+
+.bucket-list li {
+    font-size: 1.5rem;
+    background-color: var(--gray-bg);
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.bl-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.bl-text-content {
+    text-align: center;
+}
+
+.bl-text-content p {
+    font-size: 1.2rem; /* Default font size */
+    text-align: center;
+}
+
+/* Tablet: Two columns */
+@media (min-width: 800px) {
+    .bucket-list {
+        grid-template-columns: repeat(3, 1fr);
+        padding: 2rem;
+    }
+
+    .bl-image-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .bl-text-content {
+        text-align: center;
+    }
+
+    .bl-text-content p {
+        font-size: 1.4rem; /* Default font size */
+        text-align: center;
+    }
+}
+
+/* Desktop: Three columns */
+@media (min-width: 1000px) {
+    .bucket-list {
+        grid-template-columns: repeat(5, 1fr);
+        padding: 2rem;
+    }
+
+    .bl-image-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .bl-text-content {
+        text-align: center;
+    }
+
+    .bl-text-content p {
+        font-size: 1.6rem; /* Default font size */
+        text-align: center;
     }
 }
